@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terapia visual - Yoel Vera Zapata</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary-navy: #031345;
+      --primary-navy-hover: #08216b;
+      --bg-light-btn: #f1f5f9;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --bg-footer: #031345;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text-dark);
+      background-color: #ffffff;
+      line-height: 1.6;
+    }
+
+    /* Header / Navbar */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 5%;
+      background-color: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--primary-navy);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--primary-navy); }
+
+    .dropdown { position: relative; }
+
+    .dropdown > a::after {
+      content: ' ▾';
+      font-size: 0.8em;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #ffffff;
+      min-width: 250px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      padding: 0.8rem 0;
+      list-style: none;
+      z-index: 100;
+    }
+
+    .dropdown:hover .dropdown-menu { display: block; }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 0.5rem 1.2rem;
+      color: var(--text-dark);
+      font-size: 0.9rem;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: #f8fafc;
+      color: var(--primary-navy);
+      font-weight: 600;
+    }
+
+    .btn-cita {
+      background-color: var(--primary-navy);
+      color: #ffffff !important;
+      padding: 0.75rem 1.6rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.2s, transform 0.1s;
+      display: inline-block;
+    }
+
+    .btn-cita:hover {
+      background-color: var(--primary-navy-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Página de especialidad */
+    .specialty-page {
+      padding: 4.5rem 5% 5rem;
+    }
+
+    .specialty-container {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .breadcrumb a {
+      color: var(--primary-navy);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .specialty-hero {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 3.5rem;
+      align-items: center;
+      margin-bottom: 5rem;
+    }
+
+    .specialty-eyebrow {
+      color: var(--primary-navy);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 0.8rem;
+    }
+
+    .specialty-title {
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      line-height: 1.12;
+      color: var(--primary-navy);
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+    }
+
+    .specialty-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 1.2rem;
+      max-width: 690px;
+    }
+
+    .specialty-image {
+      min-height: 430px;
+      border-radius: 28px;
+      overflow: hidden;
+      background: #e2e8f0;
+      box-shadow: 0 16px 35px rgba(3, 19, 69, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      text-align: center;
+      padding: 0;
+    }
+
+    .specialty-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 430px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .faq-section {
+      background: #f8fafc;
+      padding: 4rem;
+      border-radius: 28px;
+    }
+
+    .faq-eyebrow {
+      color: var(--primary-navy);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-title {
+      font-size: 2.2rem;
+      color: var(--primary-navy);
+      font-weight: 800;
+      margin-bottom: 2rem;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    details.faq-item {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    details.faq-item summary {
+      padding: 1.2rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary-navy);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      list-style: none;
+    }
+
+    details.faq-item summary::after {
+      content: '\f078';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+
+    details.faq-item[open] summary::after { transform: rotate(180deg); }
+
+    .faq-answer {
+      padding: 0 1.5rem 1.5rem;
+      color: var(--text-muted);
+      border-top: 1px solid #e2e8f0;
+      padding-top: 1rem;
+    }
+
+    .cta-box {
+      text-align: center;
+      margin-top: 3.5rem;
+    }
+
+    .cta-box p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--bg-footer);
+      color: #ffffff;
+      padding: 3.5rem 5% 2rem;
+    }
+
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-brand img {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .footer-brand h3 {
+      margin-bottom: 0;
+      font-size: 1.2rem;
+      color: #ffffff;
+    }
+
+    .footer-col h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+      color: #ffffff;
+    }
+
+    .footer-col p,
+    .footer-col a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.95rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .footer-col i {
+      margin-top: 4px;
+      width: 16px;
+      text-align: center;
+      color: #94a3b8;
+    }
+
+    .footer-col p strong { color: #ffffff; }
+    .footer-col a:hover { color: #ffffff; }
+
+    .social-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    .social-btn {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem !important;
+      transition: background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0 !important;
+    }
+
+    .social-btn i {
+      margin-top: 0;
+      color: inherit;
+    }
+
+    .social-btn:hover { background: rgba(255, 255, 255, 0.25); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      padding-top: 1.5rem;
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+
+    @media (max-width: 900px) {
+      nav ul { display: none; }
+
+      .specialty-hero {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .specialty-image {
+        min-height: 320px;
+      }
+
+      .specialty-image img {
+        min-height: 320px;
+      }
+
+      .faq-section {
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="web yoel.html#inicio" class="logo-container">
+      <img src="logo.png" alt="Logo Yoel Vera Zapata" class="logo-img">
+      <span class="logo-text">Yoel Vera Zapata</span>
+    </a>
+
+    <nav>
+      <ul>
+        <li><a href="web yoel.html#inicio">Inicio</a></li>
+        <li><a href="sobre-mi.html">Sobre mí</a></li>
+        <li class="dropdown">
+          <a href="javascript:void(0);" style="cursor: default;">Especialidades</a>
+          <ul class="dropdown-menu">
+            <li><a href="optometria general.html">Optometría general</a></li>
+            <li><a href="optometria pediatrica.html">Optometría pediátrica</a></li>
+            <li><a href="ojo seco.html">Ojo seco</a></li>
+            <li><a href="estrabismo ojo vago.html">Estrabismo y ojo vago</a></li>
+            <li><a href="terapia visual.html">Terapia visual</a></li>
+            <li><a href="contactologia.html">Lentes de contacto especiales (contactología)</a></li>
+            <li><a href="control miopia.html">Control de miopía</a></li>
+            <li><a href="oftalmologia.html"><em>Oftalmología</em></a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0);" style="cursor: default;">Cursos y Formaciones</a>
+          <ul class="dropdown-menu">
+            <li><a href="tutorias.html">Tutorías</a></li>
+            <li><a href="formaciones.html">Formaciones</a></li>
+            <li><a href="cursos.html">Cursos</a></li>
+            <li><a href="proximos eventos.html">Próximos eventos</a></li>
+          </ul>
+        </li>
+        <li><a href="faq.html">Preguntas Frecuentes</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <a href="https://wa.me/34654567167?text=Hola,%20me%20gustar%C3%ADa%20pedir%20cita%20para%20una%20consulta"
+       target="_blank"
+       class="btn-cita">
+      Pedir cita
+    </a>
+  </header>
+
+  <main>
+    <section class="specialty-page">
+      <div class="specialty-container">
+
+        <div class="breadcrumb">
+          <a href="web yoel.html#inicio">Inicio</a> ·
+          <a href="web yoel.html#especialidades">Especialidades</a> ·
+          Terapia visual
+        </div>
+
+        <div class="specialty-hero">
+          <div class="specialty-intro">
+            <p class="specialty-eyebrow">Especialidad</p>
+            <h1 class="specialty-title">Terapia visual</h1>
+
+            <p>
+              La Terapia Visual es un programa de "fisioterapia neurológica" diseñado para mejorar el funcionamiento del cerebro en relación con los ojos. Cuando el sistema visual es ineficiente —por ejemplo, debido a insuficiencia de convergencia, problemas de acomodación (enfoque) o dificultades en el procesamiento visual— las gafas convencionales no siempre son suficientes.
+            </p>
+
+            <p>
+              Diseño planes de entrenamiento visual completamente personalizados y supervisados en clínica, complementados con ejercicios en casa. Este tratamiento neuro-optométrico está enfocado en rehabilitar y potenciar las habilidades visuales deficientes, eliminando síntomas como cefaleas, fatiga, la visión doble (diplopía) o la falta de concentración, maximizando así tu rendimiento académico, laboral o deportivo.
+            </p>
+
+          </div>
+
+          <div class="specialty-image">
+            <img src="terapia visual.jpg" alt="Terapia visual">
+          </div>
+        </div>
+
+        <section class="faq-section">
+          <p class="faq-eyebrow"></p>
+          <h2 class="faq-title">Preguntas frecuentes</h2>
+
+          <div class="faq-list">
+
+            <details class="faq-item">
+              <summary>¿En qué consiste exactamente una sesión de Terapia Visual?</summary>
+              <div class="faq-answer">
+                <p>
+                  Diseño un programa de tratamiento personalizado acorde a tu problema y disponibilidad. Son sesiones clínicas donde, mediante el uso de lentes, prismas, filtros y equipos tecnológicos específicos, realizamos ejercicios pautados para reeducar las conexiones entre el ojo y el cerebro. Cada sesión dura entre 30 y 60 minutos.
+                </p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>¿Cuánto tiempo dura el tratamiento?</summary>
+              <div class="faq-answer">
+                <p>
+                  Depende de la condición de cada paciente. Si presentas una disfunción como una insuficiencia de convergencia con visión doble, un programa típico puede durar entre 1 y 2 meses, combinando visitas semanales a la consulta con ejercicios pautados en casa. En cambio, si se trata de un daño cerebral adquirido por un ictus o un traumatismo, puede durar entre 3 y 6 meses.
+                </p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>¿Es útil la terapia visual si me duele la cabeza?</summary>
+              <div class="faq-answer">
+                <p>
+                  Totalmente. La terapia visual es highly efectiva para tratar dolores de cabeza asociados a condiciones oculares, como el exceso acomodativo por usar mucho pantallas, mejorando la flexibilidad de enfoque y reduciendo los dolores de cabeza al final de la jornada de trabajo u ocio.
+                </p>
+              </div>
+            </details>
+
+          </div>
+
+          <div class="cta-box">
+            <p>¿Tienes dudas sobre la terapia visual o necesitas valorar tu caso?</p>
+            <a href="https://wa.me/34654567167?text=Hola,%20me%20gustar%C3%ADa%20pedir%20cita%20para%20una%20consulta"
+               target="_blank"
+               class="btn-cita">
+              Pedir cita
+            </a>
+          </div>
+        </section>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="contacto">
+    <div class="footer-container">
+      <div class="footer-col-brand">
+        <div class="footer-brand">
+          <img src="logo.png" alt="Logo Yoel Vera Zapata">
+          <h3>Yoel Vera Zapata</h3>
+        </div>
+        <p>Especialista en Optometría y Salud Ocular.</p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Consulta y Contacto</h3>
+        <p>
+          <i class="fa-solid fa-location-dot"></i> 
+          <span><strong>Murcia:</strong> Hospital Mesa del Castillo, C. Rda. Sur, 20, 30010, Murcia</span>
+        </p>
+        <p>
+          <i class="fa-solid fa-location-dot"></i> 
+          <span><strong>Cartagena:</strong> Clínica VISTA Ircovisión, C. Juan Fernandez, 7, 30204 Cartagena</span>
+        </p>
+        <p>
+          <i class="fa-solid fa-phone"></i> 
+          <span>Llamadas y WhatsApp: <a href="tel:654567167">654 56 71 67</a></span>
+        </p>
+        <p>
+          <i class="fa-regular fa-calendar-check"></i> 
+          <a href="contacto.html" target="_blank">Pide cita AQUÍ</a>
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Sígueme en redes sociales</h3>
+        <div class="social-links">
+          <a href="https://share.google/acAovuU72B6yNQDen" target="_blank" class="social-btn">
+            <i class="fa-brands fa-google"></i> Google
+          </a>
+          <a href="https://www.instagram.com/yoelverazapata/" target="_blank" class="social-btn">
+            <i class="fa-brands fa-instagram"></i> Instagram
+          </a>
+          <a href="https://www.linkedin.com/in/yoelverazapata/" target="_blank" class="social-btn">
+            <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+          </a>
+          <a href="https://www.facebook.com/people/Enfoca-Visi%C3%B3n/61557532261503/" target="_blank" class="social-btn">
+            <i class="fa-brands fa-facebook-f"></i> Facebook
+          </a>
+          <a href="https://www.tiktok.com/@enfocavision" target="_blank" class="social-btn">
+            <i class="fa-brands fa-tiktok"></i> TikTok
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Yoel Vera Zapata. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidad - Yoel Vera Zapata</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary-navy: #031345;
+      --primary-navy-hover: #08216b;
+      --bg-light-btn: #f1f5f9;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --bg-footer: #031345;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text-dark);
+      background-color: #ffffff;
+      line-height: 1.6;
+    }
+
+    /* Header / Navbar */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 5%;
+      background-color: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--primary-navy);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--primary-navy); }
+
+    .dropdown { position: relative; }
+
+    .dropdown > a::after {
+      content: ' ▾';
+      font-size: 0.8em;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #ffffff;
+      min-width: 250px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      padding: 0.8rem 0;
+      list-style: none;
+      z-index: 100;
+    }
+
+    .dropdown:hover .dropdown-menu { display: block; }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 0.5rem 1.2rem;
+      color: var(--text-dark);
+      font-size: 0.9rem;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: #f8fafc;
+      color: var(--primary-navy);
+      font-weight: 600;
+    }
+
+    .btn-cita {
+      background-color: var(--primary-navy);
+      color: #ffffff !important;
+      padding: 0.75rem 1.6rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.2s, transform 0.1s;
+      display: inline-block;
+    }
+
+    .btn-cita:hover {
+      background-color: var(--primary-navy-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Estilos del Contenido de Privacidad */
+    .legal-page {
+      padding: 4.5rem 5% 5rem;
+    }
+
+    .legal-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .breadcrumb a {
+      color: var(--primary-navy);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .page-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .page-eyebrow {
+      color: var(--primary-navy);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 0.8rem;
+    }
+
+    .page-title {
+      font-size: clamp(2.2rem, 5vw, 3rem);
+      line-height: 1.15;
+      color: var(--primary-navy);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .legal-content {
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 24px;
+      padding: 3rem;
+      box-shadow: 0 10px 30px rgba(3, 19, 69, 0.04);
+    }
+
+    .legal-content h2 {
+      color: var(--primary-navy);
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 2rem 0 0.8rem;
+    }
+
+    .legal-content h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .legal-content p, .legal-content ul {
+      color: var(--text-dark);
+      font-size: 0.98rem;
+      margin-bottom: 1rem;
+    }
+
+    .legal-content ul {
+      padding-left: 1.5rem;
+    }
+
+    .legal-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .legal-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+    }
+
+    .legal-table th, .legal-table td {
+      padding: 0.75rem 1rem;
+      border: 1px solid #e2e8f0;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    .legal-table th {
+      background-color: #f8fafc;
+      color: var(--primary-navy);
+      font-weight: 700;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--bg-footer);
+      color: #ffffff;
+      padding: 3.5rem 5% 2rem;
+    }
+
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-brand img {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .footer-brand h3 {
+      margin-bottom: 0;
+      font-size: 1.2rem;
+      color: #ffffff;
+    }
+
+    .footer-col h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+      color: #ffffff;
+    }
+
+    .footer-col p,
+    .footer-col a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.95rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .footer-col i {
+      margin-top: 4px;
+      width: 16px;
+      text-align: center;
+      color: #94a3b8;
+    }
+
+    .footer-col p strong { color: #ffffff; }
+    .footer-col a:hover { color: #ffffff; }
+
+    .social-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    .social-btn {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem !important;
+      transition: background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0 !important;
+    }
+
+    .social-btn i {
+      margin-top: 0;
+      color: inherit;
+    }
+
+    .social-btn:hover { background: rgba(255, 255, 255, 0.25); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      padding-top: 1.5rem;
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+
+    @media (max-width: 900px) {
+      nav ul { display: none; }
+      .legal-content { padding: 1.8rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="web yoel.html#inicio" class="logo-container">
+      <img src="logo.png" alt="Logo Yoel Vera Zapata" class="logo-img">
+      <span class="logo-text">Yoel Vera Zapata</span>
+    </a>
+
+<nav>
+  <ul>
+    <li><a href="web yoel.html#inicio">Inicio</a></li>
+    <li><a href="sobre-mi.html">Sobre mí</a></li>
+    <li class="dropdown">
+      <a href="javascript:void(0);" style="cursor: default;">Especialidades</a>
+      <ul class="dropdown-menu">
+        <li><a href="optometria general.html">Optometría general</a></li>
+        <li><a href="optometria pediatrica.html">Optometría pediátrica</a></li>
+        <li><a href="ojo seco.html">Ojo seco</a></li>
+        <li><a href="estrabismo ojo vago.html">Estrabismo y ojo vago</a></li>
+        <li><a href="terapia visual.html">Terapia visual</a></li>
+        <li><a href="contactologia.html">Lentes de contacto especiales (contactología)</a></li>
+        <li><a href="control miopia.html">Control de miopía</a></li>
+        <li><a href="oftalmologia.html"><em>Oftalmología</em></a></li>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a href="javascript:void(0);" style="cursor: default;">Cursos y Formaciones</a>
+      <ul class="dropdown-menu">
+        <li><a href="tutorias.html">Tutorías</a></li>
+        <li><a href="formaciones.html">Formaciones</a></li>
+        <li><a href="cursos.html">Cursos</a></li>
+        <li><a href="proximos eventos.html">Próximos eventos</a></li>
+      </ul>
+    </li>
+    <li><a href="faq.html">Preguntas Frecuentes</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+  </ul>
+</nav>
+
+    <a href="https://wa.me/34654567167?text=Hola,%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n" 
+       target="_blank" 
+       class="btn-cita">
+      Pedir cita
+    </a>
+  </header>
+
+  <main>
+    <section class="legal-page">
+      <div class="legal-container">
+
+        <div class="breadcrumb">
+          <a href="web yoel.html#inicio">Inicio</a> · Política de Privacidad
+        </div>
+
+        <div class="page-header">
+          <p class="page-eyebrow">Información Legal</p>
+          <h1 class="page-title">Política de Privacidad</h1>
+        </div>
+
+        <div class="legal-content">
+
+          <h2>1. Información General y Responsable del Tratamiento</h2>
+          <p>De conformidad con el Reglamento General de Protección de Datos (RGPD) y la Ley Orgánica 3/2018 de Protección de Datos Personales y garantía de los derechos digitales, se informa a los usuarios del sitio web del tratamiento de sus datos personales.</p>
+          
+          <table class="legal-table">
+            <tr>
+              <th>Responsable</th>
+              <td>Yoel Vera Zapata</td>
+            </tr>
+            <tr>
+              <th>Correo electrónico</th>
+              <td>yoelvz@enfocavision.com</td>
+            </tr>
+            <tr>
+              <th>Teléfono</th>
+              <td>+34 654 567 167</td>
+            </tr>
+            <tr>
+              <th>Finalidad</th>
+              <td>Atención de consultas, gestión de citas y solicitudes de información sobre formaciones/servicios optométricos.</td>
+            </tr>
+          </table>
+
+          <h2>2. Datos Recabados y Finalidad del Tratamiento</h2>
+          <p>A través de los formularios del sitio web (como el formulario de contacto), se recopilan únicamente los datos estrictamente necesarios para atender la solicitud del usuario:</p>
+          <ul>
+            <li><strong>Datos identificativos:</strong> Nombre completo, dirección de correo electrónico y teléfono.</li>
+            <li><strong>Finalidad:</strong> Responder a las consultas formuladas, gestionar la programación de citas clínicas o proporcionar información sobre tutorías y cursos de formación.</li>
+          </ul>
+
+          <h2>3. Legitimación del Tratamiento</h2>
+          <p>La base legal para el tratamiento de los datos es el <strong>consentimiento del interesado</strong> expresado al marcar la casilla de verificación en el formulario de contacto previa al envío del mensaje.</p>
+
+          <h2>4. Conservación de los Datos</h2>
+          <p>Los datos personales proporcionados se conservarán durante el tiempo estrictamente necesario para cumplir con la finalidad para la que fueron recabados y para responder a posibles responsabilidades derivadas del tratamiento, o bien hasta que el interesado solicite su supresión.</p>
+
+          <h2>5. Destinatarios de los Datos</h2>
+          <p>No se cederán datos a terceros, salvo obligación legal. Los envíos de formularios a través del sitio web pueden hacer uso de proveedores de servicios técnicos en calidad de encargados del tratamiento bajo los correspondientes estándares de seguridad.</p>
+
+          <h2>6. Derechos del Usuario</h2>
+          <p>El usuario puede ejercer en cualquier momento sus derechos relativos a la protección de datos personales:</p>
+          <ul>
+            <li>Acceso a sus datos personales.</li>
+            <li>Rectificación de datos inexactos.</li>
+            <li>Supresión ("derecho al olvido").</li>
+            <li>Limitación u oposición al tratamiento.</li>
+            <li>Portabilidad de los datos.</li>
+          </ul>
+          <p>Para ejercitar estos derechos, puede remitir una comunicación por escrito adjuntando copia de su documento de identidad a <strong>yoelvz@enfocavision.com</strong>.</p>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="contacto">
+    <div class="footer-container">
+      <div class="footer-col-brand">
+        <div class="footer-brand">
+          <img src="logo.png" alt="Logo Yoel Vera Zapata">
+          <h3>Yoel Vera Zapata</h3>
+        </div>
+        <p>Especialista en Optometría y Salud Ocular.</p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Consulta y Contacto</h3>
+        <p>
+          <i class="fa-solid fa-location-dot"></i> 
+          <span><strong>Murcia:</strong> Hospital Mesa del Castillo, C. Rda. Sur, 20, 30010, Murcia</span>
+        </p>
+        <p>
+          <i class="fa-solid fa-location-dot"></i> 
+          <span><strong>Cartagena:</strong> Clínica VISTA Ircovisión, C. Juan Fernandez, 7, 30204 Cartagena</span>
+        </p>
+        <p>
+          <i class="fa-solid fa-phone"></i> 
+          <span>Llamadas y WhatsApp: <a href="tel:654567167">654 56 71 67</a></span>
+        </p>
+        <p>
+          <i class="fa-regular fa-calendar-check"></i> 
+          <a href="contacto.html" target="_blank">Pide cita AQUÍ</a>
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Sígueme en redes sociales</h3>
+        <div class="social-links">
+          <a href="https://share.google/acAovuU72B6yNQDen" target="_blank" class="social-btn">
+            <i class="fa-brands fa-google"></i> Google
+          </a>
+          <a href="https://www.instagram.com/yoelverazapata/" target="_blank" class="social-btn">
+            <i class="fa-brands fa-instagram"></i> Instagram
+          </a>
+          <a href="https://www.linkedin.com/in/yoelverazapata/" target="_blank" class="social-btn">
+            <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+          </a>
+          <a href="https://www.facebook.com/people/Enfoca-Visi%C3%B3n/61557532261503/" target="_blank" class="social-btn">
+            <i class="fa-brands fa-facebook-f"></i> Facebook
+          </a>
+          <a href="https://www.tiktok.com/@enfocavision" target="_blank" class="social-btn">
+            <i class="fa-brands fa-tiktok"></i> TikTok
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Yoel Vera Zapata. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursos - Yoel Vera Zapata</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary-navy: #031345;
+      --primary-navy-hover: #08216b;
+      --bg-light-btn: #f1f5f9;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --bg-footer: #031345;
+      --badge-bg: #e0e7ff;
+      --badge-color: #3730a3;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text-dark);
+      background-color: #ffffff;
+      line-height: 1.6;
+    }
+
+    /* Header / Navbar */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 5%;
+      background-color: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--primary-navy);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--primary-navy); }
+
+    .dropdown { position: relative; }
+
+    .dropdown > a::after {
+      content: ' ▾';
+      font-size: 0.8em;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #ffffff;
+      min-width: 250px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      padding: 0.8rem 0;
+      list-style: none;
+      z-index: 100;
+    }
+
+    .dropdown:hover .dropdown-menu { display: block; }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 0.5rem 1.2rem;
+      color: var(--text-dark);
+      font-size: 0.9rem;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: #f8fafc;
+      color: var(--primary-navy);
+      font-weight: 600;
+    }
+
+    .btn-cita {
+      background-color: var(--primary-navy);
+      color: #ffffff !important;
+      padding: 0.75rem 1.6rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.2s, transform 0.1s;
+      display: inline-block;
+    }
+
+    .btn-cita:hover {
+      background-color: var(--primary-navy-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Página de cursos */
+    .courses-page {
+      padding: 4.5rem 5% 5rem;
+    }
+
+    .courses-container {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .breadcrumb a {
+      color: var(--primary-navy);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .page-header {
+      margin-bottom: 3.5rem;
+    }
+
+    .page-eyebrow {
+      color: var(--primary-navy);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 0.8rem;
+    }
+
+    .page-title {
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      line-height: 1.12;
+      color: var(--primary-navy);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .page-description {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 700px;
+    }
+
+    /* Cápsula de Curso */
+    .courses-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .course-card {
+      background: #f8fafc;
+      border-radius: 28px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(3, 19, 69, 0.05);
+      border: 1px solid #e2e8f0;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .course-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 35px rgba(3, 19, 69, 0.09);
+    }
+
+    .course-image {
+      width: 100%;
+      height: 100%;
+      min-height: 280px;
+      background: #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .course-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .course-content {
+      padding: 2.5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .course-badges {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background-color: var(--badge-bg);
+      color: var(--badge-color);
+      padding: 0.35rem 0.9rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-status {
+      background-color: #fef3c7;
+      color: #92400e;
+    }
+
+    .course-title {
+      font-size: 1.8rem;
+      color: var(--primary-navy);
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+
+    .course-description {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .course-meta {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .course-meta li {
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .course-meta li i {
+      color: var(--primary-navy);
+      width: 18px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--bg-footer);
+      color: #ffffff;
+      padding: 3.5rem 5% 2rem;
+    }
+
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-brand img {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .footer-brand h3 {
+      margin-bottom: 0;
+      font-size: 1.2rem;
+      color: #ffffff;
+    }
+
+    .footer-col h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+      color: #ffffff;
+    }
+
+    .footer-col p,
+    .footer-col a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.95rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .footer-col i {
+      margin-top: 4px;
+      width: 16px;
+      text-align: center;
+      color: #94a3b8;
+    }
+
+    .footer-col p strong { color: #ffffff; }
+    .footer-col a:hover { color: #ffffff; }
+
+    .social-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    .social-btn {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem !important;
+      transition: background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0 !important;
+    }
+
+    .social-btn i {
+      margin-top: 0;
+      color: inherit;
+    }
+
+    .social-btn:hover { background: rgba(255, 255, 255, 0.25); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      padding-top: 1.5rem;
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+
+    @media (max-width: 900px) {
+      nav ul { display: none; }
+
+      .course-card {
+        grid-template-columns: 1fr;
+      }
+
+      .course-image {
+        min-height: 220px;
+      }
+
+      .course-content {
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="web yoel.html#inicio" class="logo-container">
+      <img src="logo.png" alt="Logo Yoel Vera Zapata" class="logo-img">
+      <span class="logo-text">Yoel Vera Zapata</span>
+    </a>
+
+<nav>
+  <ul>
+    <li><a href="web yoel.html#inicio">Inicio</a></li>
+    <li><a href="sobre-mi.html">Sobre mí</a></li>
+    <li class="dropdown">
+      <a href="javascript:void(0);" style="cursor: default;">Especialidades</a>
+      <ul class="dropdown-menu">
+        <li><a href="optometria general.html">Optometría general</a></li>
+        <li><a href="optometria pediatrica.html">Optometría pediátrica</a></li>
+        <li><a href="ojo seco.html">Ojo seco</a></li>
+        <li><a href="estrabismo ojo vago.html">Estrabismo y ojo vago</a></li>
+        <li><a href="terapia visual.html">Terapia visual</a></li>
+        <li><a href="contactologia.html">Lentes de contacto especiales (contactología)</a></li>
+        <li><a href="control miopia.html">Control de miopía</a></li>
+        <li><a href="oftalmologia.html"><em>Oftalmología</em></a></li>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a href="javascript:void(0);" style="cursor: default;">Cursos y Formaciones</a>
+      <ul class="dropdown-menu">
+        <li><a href="tutorias.html">Tutorías</a></li>
+        <li><a href="formaciones.html">Formaciones</a></li>
+        <li><a href="cursos.html">Cursos</a></li>
+        <li><a href="proximos eventos.html">Próximos eventos</a></li>
+      </ul>
+    </li>
+    <li><a href="faq.html">Preguntas Frecuentes</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+  </ul>
+</nav>
+
+    <a href="https://wa.me/34654567167?text=Hola,%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20sobre%20los%20cursos"
+       target="_blank"
+       class="btn-cita">
+      Pedir cita
+    </a>
+  </header>
+
+  <main>
+    <section class="courses-page">
+      <div class="courses-container">
+
+        <div class="breadcrumb">
+          <a href="web yoel.html#inicio">Inicio</a> ·
+          <a href="cursos formaciones.html">Cursos y Formaciones</a> ·
+          Cursos
+        </div>
+
+        <div class="page-header">
+          <p class="page-eyebrow">Formación especializada online</p>
+          <h1 class="page-title">Cursos</h1>
+          <p class="page-description">Programas formativos diseñados para profundizar en áreas clave de la optometría y la salud ocular, con contenidos actualizados y enfoque práctico.</p>
+        </div>
+
+        <div class="courses-list">
+
+          <!-- Cápsula de Curso 1 -->
+          <article class="course-card">
+            <div class="course-image">
+              <img src="Optometria Pediátrica.jpg" alt="Optometría Pediátrica Avanzada y Estrabismo">
+            </div>
+
+            <div class="course-content">
+              <div class="course-badges">
+                <span class="badge">ELEARNING360</span>
+                <span class="badge badge-status">¡Próximamente!</span>
+              </div>
+
+              <h2 class="course-title">Optometría Pediátrica Avanzada y Estrabismo</h2>
+
+              <p class="course-description">
+                Formación avanzada enfocada en el examen visual pediátrico, el diagnóstico precoz y el abordaje clínico del estrabismo. Diseñado para actualizar tus protocolos de evaluación y mejorar los resultados en consulta infantil.
+              </p>
+
+              <ul class="course-meta">
+                <li><i class="fa-solid fa-laptop"></i> <strong>Plataforma:</strong> ELEARNING360</li>
+                <li><i class="fa-regular fa-clock"></i> <strong>Estado:</strong> ¡Próximamente!</li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="contacto">
+    <div class="footer-container">
+      <div class="footer-col-brand">
+        <div class="footer-brand">
+          <img src="logo.png" alt="Logo Yoel Vera Zapata">
+          <h3>Yoel Vera Zapata</h3>
+        </div>
+        <p>Especialista en Optometría y Salud Ocular.</p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Consulta y Contacto</h3>
+        <p>
+          <i class="fa-solid fa-location-dot"></i> 
+          <span><strong>Murcia:</strong> Hospital Mesa del Castillo, C. Rda. Sur, 20, 30010, Murcia</span>
+        </p>
+        <p>
+          <i class="fa-solid fa-location-dot"></i> 
+          <span><strong>Cartagena:</strong> Clínica VISTA Ircovisión, C. Juan Fernandez, 7, 30204 Cartagena</span>
+        </p>
+        <p>
+          <i class="fa-solid fa-phone"></i> 
+          <span>Llamadas y WhatsApp: <a href="tel:654567167">654 56 71 67</a></span>
+        </p>
+        <p>
+          <i class="fa-regular fa-calendar-check"></i> 
+          <a href="contacto.html" target="_blank">Pide cita AQUÍ</a>
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Sígueme en redes sociales</h3>
+        <div class="social-links">
+          <a href="https://share.google/acAovuU72B6yNQDen" target="_blank" class="social-btn">
+            <i class="fa-brands fa-google"></i> Google
+          </a>
+          <a href="https://www.instagram.com/yoelverazapata/" target="_blank" class="social-btn">
+            <i class="fa-brands fa-instagram"></i> Instagram
+          </a>
+          <a href="https://www.linkedin.com/in/yoelverazapata/" target="_blank" class="social-btn">
+            <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+          </a>
+          <a href="https://www.facebook.com/people/Enfoca-Visi%C3%B3n/61557532261503/" target="_blank" class="social-btn">
+            <i class="fa-brands fa-facebook-f"></i> Facebook
+          </a>
+          <a href="https://www.tiktok.com/@enfocavision" target="_blank" class="social-btn">
+            <i class="fa-brands fa-tiktok"></i> TikTok
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Yoel Vera Zapata. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

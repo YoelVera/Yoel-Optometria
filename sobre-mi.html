@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre mí - Yoel Vera Zapata</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary-navy: #031345;
+      --primary-navy-hover: #08216b;
+      --bg-light-btn: #f1f5f9;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --bg-footer: #031345;
+      --star-gold: #f59e0b;
+    }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text-dark);
+      background-color: #ffffff;
+      line-height: 1.6;
+    }
+    /* Header / Navbar compartido */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 5%;
+      background-color: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+    .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-img { height: 48px; width: auto; object-fit: contain; }
+    .logo-text { font-weight: 800; font-size: 1.1rem; color: var(--primary-navy); text-transform: uppercase; }
+    nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; }
+    nav a { text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+    nav a:hover { color: var(--primary-navy); }
+    /* Menú desplegable */
+    .dropdown { position: relative; }
+    .dropdown > a::after { content: ' ▾'; font-size: 0.8em; }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #ffffff;
+      min-width: 250px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      padding: 0.8rem 0;
+      list-style: none;
+      z-index: 100;
+    }
+    .dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu li a {
+      display: block;
+      padding: 0.5rem 1.2rem;
+      color: var(--text-dark);
+      font-size: 0.9rem;
+    }
+    .dropdown-menu li a:hover {
+      background-color: #f8fafc;
+      color: var(--primary-navy);
+      font-weight: 600;
+    }
+
+    .btn-cita {
+      background-color: var(--primary-navy);
+      color: #ffffff !important;
+      padding: 0.75rem 1.6rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }
+    .btn-cita:hover { background-color: var(--primary-navy-hover); }
+
+    /* Sección Sobre Mí */
+    .about-section { padding: 4rem 5%; background-color: #f8fafc; }
+    .about-container { max-width: 1100px; margin: 0 auto; }
+    .section-eyebrow { color: var(--primary-navy); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+    .section-title { font-size: 2.2rem; font-weight: 800; color: var(--primary-navy); margin-bottom: 2.5rem; }
+    
+    .about-grid { display: flex; align-items: center; gap: 3rem; margin-bottom: 3rem; }
+    .about-grid.reverse { flex-direction: row-reverse; }
+    .about-text { flex: 1; }
+    .about-image { flex: 1; }
+    .about-image img { width: 100%; height: 380px; object-fit: cover; border-radius: 20px; box-shadow: 0 10px 25px rgba(3, 19, 69, 0.08); }
+    
+    .about-name { font-size: 1.5rem; font-weight: 800; color: var(--primary-navy); margin-bottom: 0.2rem; }
+    .about-col { display: inline-block; font-size: 0.9rem; color: var(--text-muted); font-weight: 600; margin-bottom: 1.2rem; background: #e2e8f0; padding: 0.2rem 0.8rem; border-radius: 50px; }
+    .about-text p { color: var(--text-muted); margin-bottom: 1rem; }
+    .about-block { margin-bottom: 3rem; }
+    .about-text h3, .about-block h3 { font-size: 1.3rem; font-weight: 700; color: var(--primary-navy); margin-bottom: 1rem; }
+    .about-text h4 { font-size: 1rem; font-weight: 700; color: var(--primary-navy); margin: 1.5rem 0 0.8rem 0; }
+    
+    .about-list { list-style: none; color: var(--text-muted); }
+    .about-list li { position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem; }
+    .about-list li::before { content: '•'; color: var(--primary-navy); font-weight: bold; position: absolute; left: 0; }
+
+    /* Cápsulas */
+    .pills-container { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+    .pill { display: inline-flex; align-items: center; gap: 0.6rem; background: #ffffff; padding: 0.4rem 1rem 0.4rem 0.4rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; color: var(--text-dark); border: 1px solid #e2e8f0; }
+    .pill img { width: 28px; height: 28px; border-radius: 50%; object-fit: contain; background: #f1f5f9; border: 1px solid #e2e8f0; padding: 2px; }
+
+    /* Acordeón */
+    details.accordion { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; }
+    details.accordion summary { padding: 1.2rem 1.5rem; font-weight: 700; font-size: 1.1rem; color: var(--primary-navy); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    details.accordion summary::after { content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900; transition: transform 0.3s; }
+    details[open].accordion summary::after { transform: rotate(180deg); }
+    .accordion-content { padding: 1rem 1.5rem 1.5rem 1.5rem; border-top: 1px solid #e2e8f0; }
+
+    @media (max-width: 900px) {
+      .about-grid, .about-grid.reverse { flex-direction: column; text-align: center; }
+      .about-list li { text-align: left; }
+      .pills-container { justify-content: center; }
+      nav ul { display: none; }
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--bg-footer);
+      color: #ffffff;
+      padding: 3.5rem 5% 2rem 5%;
+    }
+
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-brand img {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .footer-brand h3 {
+      margin-bottom: 0;
+      font-size: 1.2rem;
+      color: #ffffff;
+    }
+
+    .footer-col h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+      color: #ffffff;
+    }
+
+    .footer-col p, .footer-col a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.95rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .footer-col i {
+      margin-top: 4px;
+      width: 16px;
+      text-align: center;
+      color: #94a3b8;
+    }
+
+    .footer-col p strong { color: #ffffff; }
+    .footer-col a:hover { color: #ffffff; }
+
+    .social-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    .social-btn {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem !important;
+      transition: background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0 !important;
+    }
+
+    .social-btn i { margin-top: 0; color: inherit; }
+    .social-btn:hover { background: rgba(255, 255, 255, 0.25); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      padding-top: 1.5rem;
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="#" class="logo-container">
+      <img src="logo.png" alt="Logo Yoel Vera Zapata" class="logo-img">
+      <span class="logo-text">Yoel Vera Zapata</span>
+    </a>
+
+  <nav>
+  <ul>
+    <li><a href="web yoel.html#inicio">Inicio</a></li>
+    <li><a href="sobre-mi.html">Sobre mí</a></li>
+    <li class="dropdown">
+      <a href="javascript:void(0);" style="cursor: default;">Especialidades</a>
+      <ul class="dropdown-menu">
+        <li><a href="optometria general.html">Optometría general</a></li>
+        <li><a href="optometria pediatrica.html">Optometría pediátrica</a></li>
+        <li><a href="ojo seco.html">Ojo seco</a></li>
+        <li><a href="estrabismo ojo vago.html">Estrabismo y ojo vago</a></li>
+        <li><a href="terapia visual.html">Terapia visual</a></li>
+        <li><a href="contactologia.html">Lentes de contacto especiales (contactología)</a></li>
+        <li><a href="control miopia.html">Control de miopía</a></li>
+        <li><a href="oftalmologia.html"><em>Oftalmología</em></a></li>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a href="javascript:void(0);" style="cursor: default;">Cursos y Formaciones</a>
+      <ul class="dropdown-menu">
+        <li><a href="tutorias.html">Tutorías</a></li>
+        <li><a href="formaciones.html">Formaciones</a></li>
+        <li><a href="cursos.html">Cursos</a></li>
+        <li><a href="proximos eventos.html">Próximos eventos</a></li>
+      </ul>
+    </li>
+    <li><a href="faq.html">Preguntas Frecuentes</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+  </ul>
+</nav>
+
+    <a href="https://wa.me/34654567167?text=Hola,%20me%20gustar%C3%ADa%20pedir%20cita%20para%20una%20consulta" target="_blank" class="btn-cita">Pedir cita</a>
+  </header>
+
+  <main>
+    <section class="about-section">
+      <div class="about-container">
+        <p class="section-eyebrow">Conóceme</p>
+        <h2 class="section-title">Sobre mí</h2>
+
+        <!-- Introducción -->
+        <div class="about-grid">
+          <div class="about-text">
+            <h3 class="about-name">D. YOEL VERA ZAPATA</h3>
+            <span class="about-col">Nº Colegiado: 28831</span>
+            <p>Desarrolla su actividad profesional como fundador y director de ENFOCA VISIÓN, constituyendo el primer Grupo de Optometristas del país. Además, es responsable de la Unidad de Visión del Hospital Mesa del Castillo y optometrista en la Unidad de Oftalmología Pediátrica y Estrabismo de dicho hospital.</p>
+            <p>Asimismo colabora activamente con Clínica VISTA Ircovisión en Cartagena, Centro Médico Sanitas Murcia, Clínica Oftalmológica y Quirónsalud Alicante. </p>
+            <p>Realiza su actividad investigadora en el Grupo de Investigación en Optometría Clínica y Experimental de la Universidad de Murcia.</p>
+          </div>
+          <div class="about-image">
+            <img src="sobre mi 1.jpg" alt="Yoel Vera Zapata">
+          </div>
+        </div>
+
+        <!-- Titulación -->
+        <div class="about-block">
+          <h3>Titulación</h3>
+          <ul class="about-list">
+            <li>Graduado en Óptica y Optometría por la Universidad de Murcia con mención honorífica en su Trabajo Fin de Grado, obteniendo la calificación de 10-Matrícula de Honor.</li>
+            <li>Máster Oficial Universitario en Optometría Clínica por la Universidad de Murcia con mención honorífica en su Trabajo fin de Máster, obteniendo la calificación de 10-Matrícula de Honor.</li>
+            <li>Actualmente es Doctorando en Ciencias de la Visión por la Universidad de Murcia, bajo la línea de investigación de «Estimulación eléctrica transcraneal como tratamiento de la ambliopía».</li>
+          </ul>
+        </div>
+
+        <!-- Actividad Profesional -->
+        <div class="about-grid reverse">
+          <div class="about-text">
+            <h3>Actividad profesional</h3>
+            <ul class="about-list">
+              <li>Fundador y director de ENFOCA VISIÓN.</li>
+              <li>Responsable de la Unidad de Visión del Hospital Mesa del Castillo.</li>
+              <li>Unidad de Oftalmología Pediátrica y Estrabismo del Hospital Mesa del Castillo.</li>
+            </ul>
+            <h4>Colaborador en:</h4>
+            <ul class="about-list">
+              <li>Clínica VISTA Ircovisión Cartagena - Unidad de Ojo seco y Terapia Visual.</li>
+              <li>Centro Médico Sanitas Murcia - Optometría.</li>
+              <li>Clínica oftalmológica COC - Unidad de ojo seco.</li>
+              <li>Hospital Quirónsalud Alicante - Conselleria de Sanidad de la Comunidad Valenciana.</li>
+            </ul>
+          </div>
+          <div class="about-image">
+            <img src="sobre mi 2.jpg" alt="Actividad profesional">
+          </div>
+        </div>
+
+        <!-- Asociaciones -->
+        <div class="about-grid">
+          <div class="about-text">
+            <h3>Asociaciones y comités científicos</h3>
+            <div class="pills-container">
+              <div class="pill"><img src="umu.png" alt="UMU"> Investigador en Grupo de Investigación en Optometría Clínica y Experimental de la Universidad de Murcia</div>
+              <div class="pill"><img src="eudes.png" alt="EuDES"> Miembro de la European Dry Eye Society (EuDES – Sociedad Europea de Ojo Seco)</div>
+              <div class="pill"><img src="eumys.png" alt="EuMyS"> Miembro de la European Myopia Society (EuMyS – Sociedad Europea de Miopía)</div>
+              <div class="pill"><img src="aecso.png" alt="AECSO"> Miembro de la Asociación Española de Contactología y Superficie Ocular (AECSO)</div>
+              <div class="pill"><img src="seo.png" alt="SEO"> Miembro de la Sociedad Española de Optometría (SEO)</div>
+              <div class="pill"><img src="desa.png" alt="DESA"> Miembro de la Dry Eye Society of America (DESA – Sociedad Americana de Ojo Seco)</div>
+              <div class="pill"><img src="wspos.png" alt="WSPOS"> Miembro de la World Society of Paediatric Ophthalmology and Strabismus (WSPOS – Sociedad Mundial de Oftalmología Pediátrica y Estrabismo)</div>
+              <div class="pill"><img src="iks.png" alt="IKS"> Miembro de la International Keratoconus Society (IKS – Sociedad Internacional de Queratocono)</div>
+            </div>
+          </div>
+          <div class="about-image">
+            <img src="sobre mi 3.jpg" alt="Asociaciones">
+          </div>
+        </div>
+
+        <!-- Congresos (Desplegable) -->
+        <div class="about-block">
+          <details class="accordion">
+            <summary>Comunicaciones en congresos</summary>
+            <div class="accordion-content">
+              <ul class="about-list">
+                <li><strong>Comunicación oral:</strong> «Terapia visual en endotropia parcialmente acomodativa con correspondencia sensorial anómala» – I Congreso de Jóvenes Optometristas de Optoacademy, 2023.</li>
+                <li><strong>Comunicación oral y e-póster:</strong> «Estudio del tratamiento con estimulación eléctrica transcraneal (tDCS) en niños ambliopes estrábicos resistentes a parche» – Congreso Nacional de Optometría 2025, Región de Murcia, España.</li>
+                <li><strong>Comunicación oral:</strong> «Ambliopía: actualización, manejo y últimos avances» – I Simposio de Óptica y Optometría, 2025, Chile.</li>
+                <li><strong>Moderador de la sesión «Presbicia» y comunicación oral:</strong> «Protocolo Optométrico integral en cirugía de presbicia: evaluación, criterios de selección y claves para una interpretación clínica precisa» – I Congreso Internacional Láser Ocular Barcelona (LOB’25), Barcelona, España.</li>
+                <li><strong>Comunicación oral:</strong> «Eficacia de la estimulación eléctrica transcraneal (tDCS) en niños ambliopes estrábicos resistentes a la terapia de oclusión» – Congreso Nacional de Optometría, Contactología y Óptica Oftálmica (OPTOM 2026), Madrid, España.</li>
+                <li><strong>Comunicación póster:</strong> «Effectiveness of transcranial direct current stimulation (tDCS) in children with strabismic amblyopia resistant to occlusion therapy» – Visual and Physiological Optics 2026 (VPO’26), Cartagena, España.</li>
+                <li><strong>Comunicación oral:</strong> «La nueva era en el manejo del Ojo Seco: diagnóstico real y estrategias terapéuticas» – II Simposio de Óptica y Optometría, 2026, Chile.</li>
+                <li><strong>Comunicación oral:</strong> «Lo que el estrabismo se llevó» – Jornadas Científico-Técnicas 2026 de Visionary, Madrid, España.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="contacto">
+    <div class="footer-container">
+      <div class="footer-col-brand">
+        <div class="footer-brand">
+          <img src="logo.png" alt="Logo Yoel Vera Zapata">
+          <h3>Yoel Vera Zapata</h3>
+        </div>
+        <p>Especialista en Optometría y Salud Ocular.</p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Consulta y Contacto</h3>
+        <p>
+          <i class="fa-solid fa-location-dot"></i> 
+          <span><strong>Murcia:</strong> Hospital Mesa del Castillo, C. Rda. Sur, 20, 30010, Murcia</span>
+        </p>
+        <p>
+          <i class="fa-solid fa-location-dot"></i> 
+          <span><strong>Cartagena:</strong> Clínica VISTA Ircovisión, C. Juan Fernandez, 7, 30204 Cartagena</span>
+        </p>
+        <p>
+          <i class="fa-solid fa-phone"></i> 
+          <span>Llamadas y WhatsApp: <a href="tel:654567167">654 56 71 67</a></span>
+        </p>
+        <p>
+          <i class="fa-regular fa-calendar-check"></i> 
+          <a href="contacto.html" target="_blank">Pide cita AQUÍ</a>
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Sígueme en redes sociales</h3>
+        <div class="social-links">
+          <a href="https://share.google/acAovuU72B6yNQDen" target="_blank" class="social-btn">
+            <i class="fa-brands fa-google"></i> Google
+          </a>
+          <a href="https://www.instagram.com/yoelverazapata/" target="_blank" class="social-btn">
+            <i class="fa-brands fa-instagram"></i> Instagram
+          </a>
+          <a href="https://www.linkedin.com/in/yoelverazapata/" target="_blank" class="social-btn">
+            <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+          </a>
+          <a href="https://www.facebook.com/people/Enfoca-Visi%C3%B3n/61557532261503/" target="_blank" class="social-btn">
+            <i class="fa-brands fa-facebook-f"></i> Facebook
+          </a>
+          <a href="https://www.tiktok.com/@enfocavision" target="_blank" class="social-btn">
+            <i class="fa-brands fa-tiktok"></i> TikTok
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Yoel Vera Zapata. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
+```[cite: 2]
