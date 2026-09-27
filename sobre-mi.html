@@ -1,6 +1,10 @@
+---
+permalink: /sobre-mi/
+---
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <link rel="icon" type="image/png" href="{{ '/logo.png' | relative_url }}">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sobre mí - Yoel Vera Zapata</title>
@@ -409,7 +413,7 @@
 
   <header>
     <a href="#" class="logo-container">
-      <img src="logo.png" alt="Logo Yoel Vera Zapata" class="logo-img">
+      <img src="{{ '/logo.png' | relative_url }}" alt="Logo Yoel Vera Zapata" class="logo-img">
       <span class="logo-text">Yoel Vera Zapata</span>
     </a>
 
@@ -417,33 +421,33 @@
     <button class="menu-backdrop" type="button" aria-label="Cerrar menú"></button>
     <nav id="site-navigation">
   <ul>
-    <li><a href="index.html#inicio">Inicio</a></li>
-    <li><a href="sobre-mi.html">Sobre mí</a></li>
+    <li><a href="{{ '/' | relative_url }}#inicio">Inicio</a></li>
+    <li><a href="{{ '/sobre-mi/' | relative_url }}">Sobre mí</a></li>
     <li class="dropdown">
       <a href="javascript:void(0);" style="cursor: default;">Especialidades</a>
       <ul class="dropdown-menu">
-        <li><a href="optometria general.html">Optometría general</a></li>
-        <li><a href="optometria pediatrica.html">Optometría pediátrica</a></li>
-        <li><a href="ojo seco.html">Ojo seco</a></li>
-        <li><a href="estrabismo ojo vago.html">Estrabismo y ojo vago</a></li>
-        <li><a href="terapia visual.html">Terapia visual</a></li>
-        <li><a href="contactologia.html">Lentes de contacto especiales (contactología)</a></li>
-        <li><a href="control miopia.html">Control de miopía</a></li>
-        <li><a href="oftalmologia.html"><em>Oftalmología</em></a></li>
+        <li><a href="{{ '/optometria-general/' | relative_url }}">Optometría general</a></li>
+        <li><a href="{{ '/optometria-pediatrica/' | relative_url }}">Optometría pediátrica</a></li>
+        <li><a href="{{ '/ojo-seco/' | relative_url }}">Ojo seco</a></li>
+        <li><a href="{{ '/estrabismo-ojo-vago/' | relative_url }}">Estrabismo y ojo vago</a></li>
+        <li><a href="{{ '/terapia-visual/' | relative_url }}">Terapia visual</a></li>
+        <li><a href="{{ '/contactologia/' | relative_url }}">Lentes de contacto especiales (contactología)</a></li>
+        <li><a href="{{ '/control-miopia/' | relative_url }}">Control de miopía</a></li>
+        <li><a href="{{ '/oftalmologia/' | relative_url }}"><em>Oftalmología</em></a></li>
       </ul>
     </li>
     <li class="dropdown">
       <a href="javascript:void(0);" style="cursor: default;">Cursos y Formaciones</a>
       <ul class="dropdown-menu">
-        <li><a href="tutorias.html">Tutorías</a></li>
-        <li><a href="formaciones.html">Formaciones</a></li>
-        <li><a href="cursos.html">Cursos</a></li>
-        <li><a href="proximos eventos.html">Próximos eventos</a></li>
+        <li><a href="{{ '/tutorias/' | relative_url }}">Tutorías</a></li>
+        <li><a href="{{ '/formaciones/' | relative_url }}">Formaciones</a></li>
+        <li><a href="{{ '/cursos/' | relative_url }}">Cursos</a></li>
+        <li><a href="{{ '/proximos-eventos/' | relative_url }}">Próximos eventos</a></li>
       </ul>
     </li>
-    <li><a href="faq.html">Preguntas Frecuentes</a></li>
-    <li><a href="blog.html">Blog</a></li>
-    <li><a href="contacto.html">Contacto</a></li>
+    <li><a href="{{ '/faq/' | relative_url }}">Preguntas Frecuentes</a></li>
+    <li><a href="{{ '/blog/' | relative_url }}">Blog</a></li>
+    <li><a href="{{ '/contacto/' | relative_url }}">Contacto</a></li>
   </ul>
 </nav>
 
@@ -466,7 +470,7 @@
             <p>Realiza su actividad investigadora en el Grupo de Investigación en Optometría Clínica y Experimental de la Universidad de Murcia.</p>
           </div>
           <div class="about-image">
-            <img src="sobre mi 1.jpg" alt="Yoel Vera Zapata">
+            <img src="{{ '/sobre mi 1.jpg' | relative_url }}" alt="Yoel Vera Zapata">
           </div>
         </div>
 
@@ -498,7 +502,7 @@
             </ul>
           </div>
           <div class="about-image">
-            <img src="sobre mi 2.jpg" alt="Actividad profesional">
+            <img src="{{ '/sobre mi 2.jpg' | relative_url }}" alt="Actividad profesional">
           </div>
         </div>
 
@@ -507,18 +511,18 @@
           <div class="about-text">
             <h3>Asociaciones y comités científicos</h3>
             <div class="pills-container">
-              <div class="pill"><img src="umu.png" alt="UMU"> Investigador en Grupo de Investigación en Optometría Clínica y Experimental de la Universidad de Murcia</div>
-              <div class="pill"><img src="eudes.png" alt="EuDES"> Miembro de la European Dry Eye Society (EuDES – Sociedad Europea de Ojo Seco)</div>
-              <div class="pill"><img src="eumys.png" alt="EuMyS"> Miembro de la European Myopia Society (EuMyS – Sociedad Europea de Miopía)</div>
-              <div class="pill"><img src="aecso.png" alt="AECSO"> Miembro de la Asociación Española de Contactología y Superficie Ocular (AECSO)</div>
-              <div class="pill"><img src="seo.png" alt="SEO"> Miembro de la Sociedad Española de Optometría (SEO)</div>
-              <div class="pill"><img src="desa.png" alt="DESA"> Miembro de la Dry Eye Society of America (DESA – Sociedad Americana de Ojo Seco)</div>
-              <div class="pill"><img src="wspos.png" alt="WSPOS"> Miembro de la World Society of Paediatric Ophthalmology and Strabismus (WSPOS – Sociedad Mundial de Oftalmología Pediátrica y Estrabismo)</div>
-              <div class="pill"><img src="iks.png" alt="IKS"> Miembro de la International Keratoconus Society (IKS – Sociedad Internacional de Queratocono)</div>
+              <div class="pill"><img src="{{ '/umu.png' | relative_url }}" alt="UMU"> Investigador en Grupo de Investigación en Optometría Clínica y Experimental de la Universidad de Murcia</div>
+              <div class="pill"><img src="{{ '/eudes.png' | relative_url }}" alt="EuDES"> Miembro de la European Dry Eye Society (EuDES – Sociedad Europea de Ojo Seco)</div>
+              <div class="pill"><img src="{{ '/eumys.png' | relative_url }}" alt="EuMyS"> Miembro de la European Myopia Society (EuMyS – Sociedad Europea de Miopía)</div>
+              <div class="pill"><img src="{{ '/aecso.png' | relative_url }}" alt="AECSO"> Miembro de la Asociación Española de Contactología y Superficie Ocular (AECSO)</div>
+              <div class="pill"><img src="{{ '/seo.png' | relative_url }}" alt="SEO"> Miembro de la Sociedad Española de Optometría (SEO)</div>
+              <div class="pill"><img src="{{ '/desa.png' | relative_url }}" alt="DESA"> Miembro de la Dry Eye Society of America (DESA – Sociedad Americana de Ojo Seco)</div>
+              <div class="pill"><img src="{{ '/wspos.png' | relative_url }}" alt="WSPOS"> Miembro de la World Society of Paediatric Ophthalmology and Strabismus (WSPOS – Sociedad Mundial de Oftalmología Pediátrica y Estrabismo)</div>
+              <div class="pill"><img src="{{ '/iks.png' | relative_url }}" alt="IKS"> Miembro de la International Keratoconus Society (IKS – Sociedad Internacional de Queratocono)</div>
             </div>
           </div>
           <div class="about-image">
-            <img src="sobre mi 3.jpg" alt="Asociaciones">
+            <img src="{{ '/sobre mi 3.jpg' | relative_url }}" alt="Asociaciones">
           </div>
         </div>
 
@@ -550,7 +554,7 @@
     <div class="footer-container">
       <div class="footer-col-brand">
         <div class="footer-brand">
-          <img src="logo.png" alt="Logo Yoel Vera Zapata">
+          <img src="{{ '/logo.png' | relative_url }}" alt="Logo Yoel Vera Zapata">
           <h3>Yoel Vera Zapata</h3>
         </div>
         <p>Especialista en Optometría y Salud Ocular.</p>
@@ -572,7 +576,7 @@
         </p>
         <p>
           <i class="fa-regular fa-calendar-check"></i> 
-          <a href="contacto.html" target="_blank">Pide cita AQUÍ</a>
+          <a href="{{ '/contacto/' | relative_url }}" target="_blank">Pide cita AQUÍ</a>
         </p>
       </div>
 
@@ -641,4 +645,3 @@
 
 </body>
 </html>
-```[cite: 2]

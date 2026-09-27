@@ -1,6 +1,9 @@
+---
+---
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <link rel="icon" type="image/png" href="{{ '/logo.png' | relative_url }}">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Yoel Vera Zapata - Optometría y Salud Ocular</title>
@@ -746,7 +749,11 @@
       .hero-title, .page-title, .specialty-title, .coming-soon-title { font-size: clamp(1.75rem, 8vw, 2.2rem); }
       .section-title, .reviews-title, .faq-title { font-size: clamp(1.55rem, 7vw, 1.9rem); }
       .hero-text, .page-description { font-size: 1rem; }
-      .hero-image img { max-height: 340px; border-radius: 20px; }
+      .hero-image img {
+        max-height: 340px;
+        border-radius: 20px;
+        object-position: center top;
+      }
       .hero-actions > a, .coming-soon-actions > a { width: 100%; text-align: center; }
       .coming-soon-card { padding: 2.25rem 1.25rem; border-radius: 20px; }
       .specialties-section, .reviews-section, .about-section { padding: 2.75rem 1rem; }
@@ -777,7 +784,7 @@
   <!-- Header -->
   <header>
     <a href="#" class="logo-container">
-      <img src="logo.png" alt="Logo Yoel Vera Zapata" class="logo-img">
+      <img src="{{ '/logo.png' | relative_url }}" alt="Logo Yoel Vera Zapata" class="logo-img">
       <span class="logo-text">Yoel Vera Zapata</span>
     </a>
 
@@ -785,33 +792,33 @@
     <button class="menu-backdrop" type="button" aria-label="Cerrar menú"></button>
     <nav id="site-navigation">
   <ul>
-    <li><a href="index.html#inicio">Inicio</a></li>
-    <li><a href="sobre-mi.html">Sobre mí</a></li>
+    <li><a href="{{ '/' | relative_url }}#inicio">Inicio</a></li>
+    <li><a href="{{ '/sobre-mi/' | relative_url }}">Sobre mí</a></li>
     <li class="dropdown">
       <a href="javascript:void(0);" style="cursor: default;">Especialidades</a>
       <ul class="dropdown-menu">
-        <li><a href="optometria general.html">Optometría general</a></li>
-        <li><a href="optometria pediatrica.html">Optometría pediátrica</a></li>
-        <li><a href="ojo seco.html">Ojo seco</a></li>
-        <li><a href="estrabismo ojo vago.html">Estrabismo y ojo vago</a></li>
-        <li><a href="terapia visual.html">Terapia visual</a></li>
-        <li><a href="contactologia.html">Lentes de contacto especiales (contactología)</a></li>
-        <li><a href="control miopia.html">Control de miopía</a></li>
-        <li><a href="oftalmologia.html"><em>Oftalmología</em></a></li>
+        <li><a href="{{ '/optometria-general/' | relative_url }}">Optometría general</a></li>
+        <li><a href="{{ '/optometria-pediatrica/' | relative_url }}">Optometría pediátrica</a></li>
+        <li><a href="{{ '/ojo-seco/' | relative_url }}">Ojo seco</a></li>
+        <li><a href="{{ '/estrabismo-ojo-vago/' | relative_url }}">Estrabismo y ojo vago</a></li>
+        <li><a href="{{ '/terapia-visual/' | relative_url }}">Terapia visual</a></li>
+        <li><a href="{{ '/contactologia/' | relative_url }}">Lentes de contacto especiales (contactología)</a></li>
+        <li><a href="{{ '/control-miopia/' | relative_url }}">Control de miopía</a></li>
+        <li><a href="{{ '/oftalmologia/' | relative_url }}"><em>Oftalmología</em></a></li>
       </ul>
     </li>
     <li class="dropdown">
       <a href="javascript:void(0);" style="cursor: default;">Cursos y Formaciones</a>
       <ul class="dropdown-menu">
-        <li><a href="tutorias.html">Tutorías</a></li>
-        <li><a href="formaciones.html">Formaciones</a></li>
-        <li><a href="cursos.html">Cursos</a></li>
-        <li><a href="proximos eventos.html">Próximos eventos</a></li>
+        <li><a href="{{ '/tutorias/' | relative_url }}">Tutorías</a></li>
+        <li><a href="{{ '/formaciones/' | relative_url }}">Formaciones</a></li>
+        <li><a href="{{ '/cursos/' | relative_url }}">Cursos</a></li>
+        <li><a href="{{ '/proximos-eventos/' | relative_url }}">Próximos eventos</a></li>
       </ul>
     </li>
-    <li><a href="faq.html">Preguntas Frecuentes</a></li>
-    <li><a href="blog.html">Blog</a></li>
-    <li><a href="contacto.html">Contacto</a></li>
+    <li><a href="{{ '/faq/' | relative_url }}">Preguntas Frecuentes</a></li>
+    <li><a href="{{ '/blog/' | relative_url }}">Blog</a></li>
+    <li><a href="{{ '/contacto/' | relative_url }}">Contacto</a></li>
   </ul>
 </nav>
 
@@ -829,12 +836,12 @@
         </p>
         <div class="hero-actions">
           <a href="https://wa.me/34654567167?text=Hola,%20me%20gustar%C3%ADa%20pedir%20cita%20para%20una%20consulta" target="_blank" class="btn-cita">Pedir cita</a>
-          <a href="sobre-mi.html" class="btn-secondary">Sobre mí</a>
+          <a href="{{ '/sobre-mi/' | relative_url }}" class="btn-secondary">Sobre mí</a>
         </div>
       </div>
 
       <div class="hero-image">
-        <img src="foto-yoel.jpg" alt="Yoel Vera Zapata - Optometrista">
+        <img src="{{ '/foto-yoel.jpg' | relative_url }}" alt="Yoel Vera Zapata - Optometrista">
       </div>
     </section>
 
@@ -846,90 +853,90 @@
 
         <div class="specialties-grid">
           <article class="specialty-card" id="optometria-general">
-            <img src="optometria general.jpg" alt="Optometría general" class="specialty-img">
+            <img src="{{ '/optometria general.jpg' | relative_url }}" alt="Optometría general" class="specialty-img">
             <div class="specialty-body">
               <h3 class="specialty-title">Optometría general</h3>
               <p class="specialty-text">
                 Examen visual exhaustivo con tecnología de vanguardia. Evalúo tu salud ocular y graduación con máxima precisión, así como disfunciones o patologías asociadas.
               </p>
-              <a href="optometria general.html"  class="btn-card-link">Saber más <i class="fa-solid fa-arrow-right"></i></a>
+              <a href="{{ '/optometria-general/' | relative_url }}"  class="btn-card-link">Saber más <i class="fa-solid fa-arrow-right"></i></a>
             </div>
           </article>
 
           <article class="specialty-card" id="optometria-pediatrica">
-            <img src="optometria pediatrica.jpg" alt="Optometría pediátrica" class="specialty-img">
+            <img src="{{ '/optometria pediatrica.jpg' | relative_url }}" alt="Optometría pediátrica" class="specialty-img">
             <div class="specialty-body">
               <h3 class="specialty-title">Optometría pediátrica</h3>
               <p class="specialty-text">
                 Tratamiento especializado desde los primeros meses de vida. Detecto anomalías tempranas para asegurar un desarrollo visual, escolar y cognitivo óptimo.
               </p>
-              <a href="optometria pediatrica.html"  class="btn-card-link">Saber más <i class="fa-solid fa-arrow-right"></i></a>
+              <a href="{{ '/optometria-pediatrica/' | relative_url }}"  class="btn-card-link">Saber más <i class="fa-solid fa-arrow-right"></i></a>
             </div>
           </article>
 
           <article class="specialty-card" id="ojo-seco">
-            <img src="ojo seco.jpg" alt="Ojo seco" class="specialty-img">
+            <img src="{{ '/ojo seco.jpg' | relative_url }}" alt="Ojo seco" class="specialty-img">
             <div class="specialty-body">
               <h3 class="specialty-title">Ojo seco</h3>
               <p class="specialty-text">
                 Diagnóstico clínico avanzado de la superficie ocular. Aplico ciencia y protocolos terapéuticos de última generación para combatir la sequedad, incluyendo el tratamiento con láser IPL.
               </p>
-              <a href="ojo seco.html"  class="btn-card-link">Saber más <i class="fa-solid fa-arrow-right"></i></a>
+              <a href="{{ '/ojo-seco/' | relative_url }}"  class="btn-card-link">Saber más <i class="fa-solid fa-arrow-right"></i></a>
             </div>
           </article>
 
           <article class="specialty-card" id="estrabismo-ojo-vago">
-            <img src="estrabismo ojo vago.jpg" alt="Estrabismo y ojo vago" class="specialty-img">
+            <img src="{{ '/estrabismo ojo vago.jpg' | relative_url }}" alt="Estrabismo y ojo vago" class="specialty-img">
             <div class="specialty-body">
               <h3 class="specialty-title">Estrabismo y ojo vago</h3>
               <p class="specialty-text">
                 Enfoque respaldado por investigación científica. Tratamientos avanzados y personalizados para rehabilitar la ambliopía y mejorar la alineación visual de forma eficaz.
               </p>
-              <a href="estrabismo ojo vago.html"  class="btn-card-link">Saber más <i class="fa-solid fa-arrow-right"></i></a>
+              <a href="{{ '/estrabismo-ojo-vago/' | relative_url }}"  class="btn-card-link">Saber más <i class="fa-solid fa-arrow-right"></i></a>
             </div>
           </article>
 
           <article class="specialty-card" id="terapia-visual">
-            <img src="terapia visual.jpg" alt="Terapia visual" class="specialty-img">
+            <img src="{{ '/terapia visual.jpg' | relative_url }}" alt="Terapia visual" class="specialty-img">
             <div class="specialty-body">
               <h3 class="specialty-title">Terapia visual</h3>
               <p class="specialty-text">
                 Programas de entrenamiento neuro-visual 100% personalizados. Rehabilito habilidades visuales deficientes, daño cerebral adquirido, estrabismos y ojo vago.
               </p>
-              <a href="terapia visual.html" class="btn-card-link">Saber más <i class="fa-solid fa-arrow-right"></i></a>
+              <a href="{{ '/terapia-visual/' | relative_url }}" class="btn-card-link">Saber más <i class="fa-solid fa-arrow-right"></i></a>
             </div>
           </article>
 
           <article class="specialty-card" id="contactologia">
-            <img src="lentes de contacto especiales.jpg" alt="Contactología especializada" class="specialty-img">
+            <img src="{{ '/lentes de contacto especiales.jpg' | relative_url }}" alt="Contactología especializada" class="specialty-img">
             <div class="specialty-body">
               <h3 class="specialty-title">Lentes de contacto especiales</h3>
               <p class="specialty-text">
                 Adaptación experta de lentes de contacto para casos clínicos complejos. Diseño soluciones a medida, como lentes nocturnas (ORTO-K) y lentes esclerales.
               </p>
-              <a href="contactologia.html"  class="btn-card-link">Saber más <i class="fa-solid fa-arrow-right"></i></a>
+              <a href="{{ '/contactologia/' | relative_url }}"  class="btn-card-link">Saber más <i class="fa-solid fa-arrow-right"></i></a>
             </div>
           </article>
 
           <article class="specialty-card" id="control-miopia">
-            <img src="control de miopia.jpg" alt="Control de miopía" class="specialty-img">
+            <img src="{{ '/control de miopia.jpg' | relative_url }}" alt="Control de miopía" class="specialty-img">
             <div class="specialty-body">
               <h3 class="specialty-title">Control de miopía</h3>
               <p class="specialty-text">
                 Sí, se puede frenar la progresión de la miopía. Implemento tratamientos como gafas con cristales especiales, lentillas blandas de control de miopía, lentillas nocturnas y colirios avalados científicamente.
               </p>
-              <a href="control miopia.html"  class="btn-card-link">Saber más <i class="fa-solid fa-arrow-right"></i></a>
+              <a href="{{ '/control-miopia/' | relative_url }}"  class="btn-card-link">Saber más <i class="fa-solid fa-arrow-right"></i></a>
             </div>
           </article>
 
           <article class="specialty-card" id="oftalmologia">
-            <img src="oftalmologia.jpg" alt="Oftalmología" class="specialty-img">
+            <img src="{{ '/oftalmologia.jpg' | relative_url }}" alt="Oftalmología" class="specialty-img">
             <div class="specialty-body">
               <h3 class="specialty-title"><em>Oftalmología</em></h3>
               <p class="specialty-text">
                 Trabajo día a día de forma directa con oftalmólogos cirujanos de referencia en cirugía refractiva, cataratas, estrabismo, retina, córnea y glaucoma. Derivación directa al especialista necesario.
               </p>
-              <a href="oftalmologia.html"  class="btn-card-link">Saber más <i class="fa-solid fa-arrow-right"></i></a>
+              <a href="{{ '/oftalmologia/' | relative_url }}"  class="btn-card-link">Saber más <i class="fa-solid fa-arrow-right"></i></a>
             </div>
           </article>
         </div>
@@ -1048,7 +1055,7 @@
     <div class="footer-container">
       <div class="footer-col-brand">
         <div class="footer-brand">
-          <img src="logo.png" alt="Logo Yoel Vera Zapata">
+          <img src="{{ '/logo.png' | relative_url }}" alt="Logo Yoel Vera Zapata">
           <h3>Yoel Vera Zapata</h3>
         </div>
         <p>Especialista en Optometría y Salud Ocular.</p>
@@ -1070,7 +1077,7 @@
         </p>
         <p>
           <i class="fa-regular fa-calendar-check"></i> 
-          <a href="contacto.html" target="_blank">Pide cita AQUÍ</a>
+          <a href="{{ '/contacto/' | relative_url }}" target="_blank">Pide cita AQUÍ</a>
         </p>
       </div>
 
