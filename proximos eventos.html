@@ -453,6 +453,197 @@
         padding: 1.8rem;
       }
     }
+
+    /* Navegación móvil lateral y ajustes de diseño */
+    .menu-toggle, .menu-backdrop { display: none; }
+
+    @media (max-width: 900px) {
+      header {
+        flex-wrap: wrap;
+        gap: .75rem 1rem;
+        padding: .8rem 4%;
+      }
+
+      .logo-img { height: 42px; }
+      .logo-text { font-size: .95rem; }
+
+      header nav {
+        order: 3;
+        flex: 0 0 100%;
+        min-width: 0;
+      }
+
+      header nav ul {
+        display: flex !important;
+        flex-wrap: nowrap;
+        gap: .35rem;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        padding: .15rem 0 .45rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+      }
+
+      header nav ul > li,
+      header nav .dropdown-menu li { flex: 0 0 auto; }
+      header nav ul.dropdown-menu { display: contents; }
+      header nav a { min-height: 40px; }
+
+      .menu-toggle { display: none; }
+      .menu-backdrop { display: none; }
+
+      .hero, .specialty-hero, .about-grid, .about-grid.reverse {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.75rem;
+      }
+
+      .hero { padding: 2.5rem 5%; }
+      .hero-title { font-size: clamp(2rem, 6vw, 2.6rem); }
+      .hero-image img { height: auto; max-height: 440px; aspect-ratio: 4 / 3; }
+      .hero-actions { flex-wrap: wrap; justify-content: center; }
+      .specialty-hero, .course-card, .event-card { grid-template-columns: minmax(0, 1fr); }
+      .specialty-image, .course-image, .event-image { width: 100%; max-width: 100%; }
+      .about-image img { height: auto; max-height: 380px; }
+      .contact-images-grid, .contact-info-grid { grid-template-columns: minmax(0, 1fr); }
+      .form-row { grid-template-columns: minmax(0, 1fr); }
+      .specialties-section, .reviews-section { padding: 3.5rem 5%; }
+      .specialty-container, .contact-container, .faq-container, .courses-container,
+      .events-container, .about-container, .legal-container { width: min(100% - 2rem, 100%); }
+      .footer-container { grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+    }
+
+    @media (max-width: 600px) {
+      body { overflow-x: hidden; }
+      header {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto auto;
+        gap: .5rem;
+        padding: .7rem 1rem;
+      }
+      .logo-container { gap: .5rem; min-width: 0; }
+      .logo-img { height: 36px; }
+      .logo-text { font-size: .78rem; letter-spacing: 0; }
+      .btn-cita { font-size: .84rem; padding: .55rem .8rem; white-space: nowrap; }
+
+      .menu-toggle {
+        display: inline-flex;
+        grid-column: 2;
+        grid-row: 1;
+        width: 44px;
+        height: 44px;
+        padding: 10px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        background: #fff;
+        color: var(--primary-navy);
+        cursor: pointer;
+        z-index: 1202;
+      }
+      .menu-toggle span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        border-radius: 2px;
+        background: currentColor;
+        transition: transform .2s ease, opacity .2s ease;
+      }
+      .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(7px) rotate(45deg); }
+      .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+      .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-7px) rotate(-45deg); }
+
+      header nav {
+        display: block;
+        position: fixed;
+        z-index: 1201;
+        inset: 0 0 0 auto;
+        width: min(86vw, 360px);
+        height: 100dvh;
+        padding: 5.5rem 1.25rem 2rem;
+        overflow-y: auto;
+        background: #fff;
+        box-shadow: -12px 0 35px rgba(3, 19, 69, .16);
+        transform: translateX(110%);
+        visibility: hidden;
+        transition: transform .25s ease, visibility .25s ease;
+      }
+      header nav.is-open { transform: translateX(0); visibility: visible; }
+      header nav ul,
+      header nav ul.dropdown-menu {
+        display: flex !important;
+        position: static;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        width: 100%;
+        max-height: none;
+        overflow: visible;
+        padding: 0;
+        box-shadow: none;
+        border: 0;
+      }
+      header nav ul > li,
+      header nav .dropdown-menu li { display: block; flex: none; }
+      header nav a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 48px;
+        padding: .65rem .4rem;
+        border-bottom: 1px solid #e2e8f0;
+        white-space: normal;
+        font-size: 1rem;
+      }
+      header nav .dropdown-menu { display: none !important; padding: 0 0 0 .8rem; }
+      header nav .dropdown.open > .dropdown-menu { display: flex !important; }
+      header nav .dropdown-menu a { font-size: .92rem; color: var(--text-muted); }
+      .menu-backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 1200;
+        padding: 0;
+        border: 0;
+        background: rgba(3, 19, 69, .42);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .25s ease, visibility .25s ease;
+      }
+      .menu-backdrop.is-visible { opacity: 1; visibility: visible; }
+      body.menu-open { overflow: hidden; }
+
+      main { padding: 2rem 1rem; }
+      .hero { padding: 2rem 1rem; gap: 1.5rem; }
+      .hero-title, .page-title, .specialty-title, .coming-soon-title { font-size: clamp(1.75rem, 8vw, 2.2rem); }
+      .section-title, .reviews-title, .faq-title { font-size: clamp(1.55rem, 7vw, 1.9rem); }
+      .hero-text, .page-description { font-size: 1rem; }
+      .hero-image img { max-height: 340px; border-radius: 20px; }
+      .hero-actions > a, .coming-soon-actions > a { width: 100%; text-align: center; }
+      .coming-soon-card { padding: 2.25rem 1.25rem; border-radius: 20px; }
+      .specialties-section, .reviews-section, .about-section { padding: 2.75rem 1rem; }
+      .specialties-grid, .reviews-grid { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+      .specialty-card { max-width: none; }
+      .specialty-body, .review-card { padding: 1.25rem; }
+      .page-header { padding: 2rem 1rem; }
+      .specialty-page, .contact-page, .faq-page, .courses-page, .events-page { padding: 2rem 1rem; }
+      .specialty-container, .contact-container, .faq-container, .courses-container,
+      .events-container, .about-container, .legal-container { width: 100%; padding-left: 0; padding-right: 0; }
+      .specialty-intro, .form-wrapper, .faq-cta-box, .cta-box { padding: 1.25rem; }
+      .course-card, .event-card { border-radius: 16px; }
+      .contact-img-card { height: 210px; }
+      .footer-container { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
+      footer { padding: 2.5rem 1rem 1.5rem; }
+      .footer-bottom { line-height: 1.6; }
+      .form-control, button, input, select, textarea { max-width: 100%; }
+      .form-control, input, select, textarea { font-size: 16px; }
+      img, video, iframe { max-width: 100%; }
+      p, li, a { overflow-wrap: anywhere; }
+    }
+
+
   </style>
 </head>
 
@@ -465,7 +656,9 @@
       <span class="logo-text">Yoel Vera Zapata</span>
     </a>
 
-<nav>
+<button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-navigation"><span></span><span></span><span></span></button>
+    <button class="menu-backdrop" type="button" aria-label="Cerrar menú"></button>
+    <nav id="site-navigation">
   <ul>
     <li><a href="index.html#inicio">Inicio</a></li>
     <li><a href="sobre-mi.html">Sobre mí</a></li>
@@ -655,6 +848,42 @@
       <p>&copy; 2026 Yoel Vera Zapata. Todos los derechos reservados.</p>
     </div>
   </footer>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const nav = document.querySelector('header nav');
+      const toggle = document.querySelector('.menu-toggle');
+      const backdrop = document.querySelector('.menu-backdrop');
+      if (!nav || !toggle || !backdrop) return;
+
+      const setMenuOpen = (open) => {
+        nav.classList.toggle('is-open', open);
+        backdrop.classList.toggle('is-visible', open);
+        document.body.classList.toggle('menu-open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      };
+
+      toggle.addEventListener('click', () => setMenuOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+      backdrop.addEventListener('click', () => setMenuOpen(false));
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') setMenuOpen(false);
+      });
+      nav.querySelectorAll('.dropdown > a').forEach((link) => {
+        link.addEventListener('click', (event) => {
+          if (window.matchMedia('(max-width: 600px)').matches) {
+            event.preventDefault();
+            link.parentElement.classList.toggle('open');
+          }
+        });
+      });
+      nav.querySelectorAll('a').forEach((link) => {
+        if (!link.matches('.dropdown > a')) link.addEventListener('click', () => setMenuOpen(false));
+      });
+      window.matchMedia('(min-width: 601px)').addEventListener('change', () => setMenuOpen(false));
+    });
+  </script>
 
 </body>
 </html>
