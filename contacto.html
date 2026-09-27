@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Próximos Eventos - Yoel Vera Zapata</title>
+  <title>Contacto - Yoel Vera Zapata</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
@@ -16,8 +16,6 @@
       --text-dark: #1e293b;
       --text-muted: #64748b;
       --bg-footer: #031345;
-      --badge-bg: #e0e7ff;
-      --badge-color: #3730a3;
     }
 
     body {
@@ -130,13 +128,13 @@
       transform: translateY(-1px);
     }
 
-    /* Página de eventos */
-    .events-page {
+    /* Sección Contacto */
+    .contact-page {
       padding: 4.5rem 5% 5rem;
     }
 
-    .events-container {
-      max-width: 1180px;
+    .contact-container {
+      max-width: 1000px;
       margin: 0 auto;
     }
 
@@ -153,7 +151,7 @@
     }
 
     .page-header {
-      margin-bottom: 3.5rem;
+      margin-bottom: 2.5rem;
     }
 
     .page-eyebrow {
@@ -173,169 +171,203 @@
       margin-bottom: 1rem;
     }
 
-    .page-description {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      max-width: 700px;
-    }
-
-    /* Listado de Cápsulas de Evento */
-    .events-list {
-      display: flex;
-      flex-direction: column;
-      gap: 2.5rem;
-    }
-
-    /* Tarjeta con altura fija e igual para todas */
-    .event-card {
-      background: #f8fafc;
-      border-radius: 28px;
-      overflow: hidden;
+    /* Tarjetas de contacto directo arriba */
+    .contact-info-grid {
       display: grid;
-      grid-template-columns: 340px 1fr;
-      height: 320px;
-      box-shadow: 0 10px 30px rgba(3, 19, 69, 0.05);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .contact-card {
+      background-color: #f8fafc;
       border: 1px solid #e2e8f0;
-      transition: transform 0.2s, box-shadow 0.2s;
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      text-decoration: none;
+      color: var(--text-dark);
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
     }
 
-    .event-card:hover {
+    .contact-card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 16px 35px rgba(3, 19, 69, 0.09);
+      border-color: #cbd5e1;
+      box-shadow: 0 10px 25px rgba(3, 19, 69, 0.05);
     }
 
-    /* Contenedor de la foto */
-    .event-image {
-      width: 100%;
-      height: 100%;
-      background-color: #ffffff; /* Fondo blanco para rellenar margenes */
-      overflow: hidden;
-      position: relative;
+    .contact-card-icon {
+      width: 52px;
+      height: 52px;
+      background-color: #ffffff;
+      color: var(--primary-navy);
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-right: 1px solid #e2e8f0;
+      font-size: 1.3rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      flex-shrink: 0;
     }
 
-    /* Muestra la imagen COMPLETA sin recortar */
-    .event-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
-      padding: 0.5rem; /* Pequeño margen estético opcional */
+    .contact-card-text span {
       display: block;
-    }
-
-    .event-content {
-      padding: 2rem 2.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      height: 100%;
-    }
-
-    .event-header-info {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 0.8rem;
-      flex-wrap: wrap;
-    }
-
-    .event-date-badge {
-      background-color: var(--primary-navy);
-      color: #ffffff;
-      padding: 0.35rem 0.9rem;
-      border-radius: 50px;
-      font-size: 0.8rem;
-      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
     }
 
-    .event-type-badge {
-      background-color: var(--badge-bg);
-      color: var(--badge-color);
-      padding: 0.35rem 0.9rem;
-      border-radius: 50px;
-      font-size: 0.8rem;
-      font-weight: 700;
+    .contact-card-text strong {
+      font-size: 1.1rem;
+      color: var(--primary-navy);
     }
 
-    .event-talk-title {
-      font-size: 1.35rem;
+    /* Formulario de Contacto */
+    .form-wrapper {
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(3, 19, 69, 0.04);
+      margin-bottom: 4rem;
+    }
+
+    .form-title {
+      font-size: 1.5rem;
       color: var(--primary-navy);
       font-weight: 800;
-      line-height: 1.3;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1.5rem;
     }
 
-    .event-details-list {
-      list-style: none;
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .form-group {
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
-      margin-bottom: 1.2rem;
     }
 
-    .event-details-list li {
+    .form-group label {
+      font-weight: 600;
       font-size: 0.95rem;
       color: var(--text-dark);
+    }
+
+    .form-group label .required {
+      color: #e11d48;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      font-size: 0.95rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      background-color: #f8fafc;
+      color: var(--text-dark);
+      font-family: inherit;
+      transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary-navy);
+      background-color: #ffffff;
+      box-shadow: 0 0 0 3px rgba(3, 19, 69, 0.1);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    /* Privacy Checkbox */
+    .checkbox-group {
       display: flex;
       align-items: flex-start;
-      gap: 10px;
+      gap: 0.8rem;
+      margin-top: 0.5rem;
     }
 
-    .event-details-list li i {
-      color: var(--primary-navy);
+    .checkbox-group input[type="checkbox"] {
       width: 18px;
-      margin-top: 4px;
+      height: 18px;
+      margin-top: 3px;
+      accent-color: var(--primary-navy);
+      cursor: pointer;
     }
 
-    .event-details-list li strong {
-      color: var(--primary-navy);
-    }
-
-    .event-actions {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .btn-inscription {
-      background-color: var(--primary-navy);
-      color: #ffffff !important;
-      padding: 0.65rem 1.4rem;
-      border-radius: 50px;
-      font-weight: 600;
+    .checkbox-group label {
       font-size: 0.9rem;
-      text-decoration: none;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .checkbox-group label a {
+      color: var(--primary-navy);
+      text-decoration: underline;
+    }
+
+    .btn-submit {
+      background-color: var(--primary-navy);
+      color: #ffffff;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
       transition: background-color 0.2s, transform 0.1s;
+      align-self: flex-start;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 0.5rem;
     }
 
-    .btn-inscription:hover {
+    .btn-submit:hover {
       background-color: var(--primary-navy-hover);
       transform: translateY(-1px);
     }
 
-    .btn-disabled {
-      background-color: #e2e8f0;
-      color: var(--text-muted) !important;
-      cursor: not-allowed;
-      padding: 0.65rem 1.4rem;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      display: inline-flex;
+    /* Galería de imágenes abajo */
+    .contact-images-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .contact-img-card {
+      border-radius: 20px;
+      overflow: hidden;
+      height: 320px;
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 8px 25px rgba(3, 19, 69, 0.04);
+      display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+    }
+
+    .contact-img-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 0.5rem;
+      display: block;
     }
 
     /* Footer */
@@ -434,24 +466,11 @@
       color: #94a3b8;
     }
 
-    /* Adaptación para móviles */
     @media (max-width: 900px) {
       nav ul { display: none; }
-
-      .event-card {
-        grid-template-columns: 1fr;
-        height: auto;
-      }
-
-      .event-image {
-        height: 220px;
-        border-right: none;
-        border-bottom: 1px solid #e2e8f0;
-      }
-
-      .event-content {
-        padding: 1.8rem;
-      }
+      .contact-images-grid { grid-template-columns: 1fr; }
+      .contact-img-card { height: 250px; }
+      .form-wrapper { padding: 1.8rem; }
     }
   </style>
 </head>
@@ -497,101 +516,117 @@
   </ul>
 </nav>
 
-    <a href="https://wa.me/34654567167?text=Hola,%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n"
-       target="_blank"
+    <a href="https://wa.me/34654567167?text=Hola,%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n" 
+       target="_blank" 
        class="btn-cita">
       Pedir cita
     </a>
   </header>
 
   <main>
-    <section class="events-page">
-      <div class="events-container">
+    <section class="contact-page">
+      <div class="contact-container">
 
         <div class="breadcrumb">
-          <a href="index.html#inicio">Inicio</a> ·
-          <a href="cursos formaciones.html">Cursos y Formaciones</a> ·
-          Próximos eventos
+          <a href="index.html#inicio">Inicio</a> · Contacto
         </div>
 
         <div class="page-header">
-          <p class="page-eyebrow">Agenda y Congresos</p>
-          <h1 class="page-title">Próximos eventos</h1>
-          <p class="page-description">Puedes encontrarme de forma presencial u online en las siguientes ponencias, jornadas y simposios del sector.</p>
+          <p class="page-eyebrow">Atención directa</p>
+          <h1 class="page-title">Contacto</h1>
         </div>
 
-        <div class="events-list">
-
-          <!-- Evento 1 -->
-          <article class="event-card">
-            <div class="event-image">
-              <img src="evento1.jpg" alt="Jornada Anual de Visionary 2026">
+        <!-- Accesos directos de contacto -->
+        <div class="contact-info-grid">
+          <a href="https://wa.me/34654567167" target="_blank" class="contact-card">
+            <div class="contact-card-icon">
+              <i class="fa-brands fa-whatsapp"></i>
             </div>
+            <div class="contact-card-text">
+              <span>Teléfono / WhatsApp</span>
+              <strong>+34 654 567 167</strong>
+            </div>
+          </a>
 
-            <div class="event-content">
-              <div class="event-header-info">
-                <span class="event-date-badge">
-                  <i class="fa-regular fa-calendar"></i> 3 Oct 2026
-                </span>
-                <span class="event-type-badge">Presencial</span>
+          <a href="mailto:yoelvz@enfocavision.com" class="contact-card">
+            <div class="contact-card-icon">
+              <i class="fa-regular fa-envelope"></i>
+            </div>
+            <div class="contact-card-text">
+              <span>Correo electrónico</span>
+              <strong>yoelvz@enfocavision.com</strong>
+            </div>
+          </a>
+        </div>
+
+        <!-- Formulario vinculado a Web3Forms -->
+        <div class="form-wrapper">
+          <h2 class="form-title">Envía tu mensaje</h2>
+
+          <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+            
+            <!-- Clave pública de Web3Forms -->
+            <input type="hidden" name="access_key" value="b1b3ff87-0a3e-4a9f-8bb0-59328e78ffa6">
+            <!-- Protección Anti-Spam (Honeypot) -->
+            <input type="hidden" name="botcheck" class="hidden" style="display: none;">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre">Nombre completo <span class="required">*</span></label>
+                <input type="text" id="nombre" name="nombre" class="form-control" required placeholder="Ej. María García">
               </div>
 
-              <h2 class="event-talk-title">«Lo que el estrabismo se llevó»</h2>
-
-              <ul class="event-details-list">
-                <li>
-                  <i class="fa-solid fa-graduation-cap"></i>
-                  <span><strong>Evento:</strong> Jornada Anual de Visionary 2026</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-location-dot"></i>
-                  <span><strong>Lugar:</strong> Hotel Exe Plaza, P. de la Castellana, 191, Madrid, España</span>
-                </li>
-              </ul>
-
-              <div class="event-actions">
-                <a href="https://www.visionarytool.com/" target="_blank" class="btn-inscription">
-                  Más información e inscripción <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8rem;"></i>
-                </a>
+              <div class="form-group">
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" class="form-control" placeholder="Ej. 600 000 000">
               </div>
             </div>
-          </article>
 
-<!-- Evento 2 -->
-<article class="event-card">
-  <div class="event-image">
-    <img src="evento2.jpg" alt="II Simposio Virtual de Óptica y Optometría, Chile">
-  </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Correo electrónico <span class="required">*</span></label>
+                <input type="email" id="email" name="email" class="form-control" required placeholder="tu@email.com">
+              </div>
 
-  <div class="event-content">
-    <div class="event-header-info">
-      <span class="event-date-badge">
-        <i class="fa-regular fa-calendar"></i> 24 Oct 2026
-      </span>
-      <span class="event-type-badge">Virtual</span>
-    </div>
+              <div class="form-group">
+                <label for="motivo">Motivo de tu consulta <span class="required">*</span></label>
+                <select id="motivo" name="motivo" class="form-control" required>
+                  <option value="" disabled selected>Selecciona una opción...</option>
+                  <option value="cita">Pedir cita como paciente</option>
+                  <option value="tutoria">Soy profesional: tutoría personalizada</option>
+                  <option value="formacion">Soy profesional: información sobre formaciones para clínicas/ópticas</option>
+                  <option value="otros">Otras consultas / contacto comercial</option>
+                </select>
+              </div>
+            </div>
 
-    <h2 class="event-talk-title">«La nueva era en el manejo del ojo seco: diagnóstico real y estrategias terapéuticas»</h2>
+            <div class="form-group">
+              <label for="mensaje">Mensaje <span class="required">*</span></label>
+              <textarea id="mensaje" name="mensaje" class="form-control" required placeholder="escribe aquí tu mensaje"></textarea>
+            </div>
 
-    <ul class="event-details-list">
-      <li>
-        <i class="fa-solid fa-graduation-cap"></i>
-        <span><strong>Evento:</strong> II Simposio Virtual de Óptica y Optometría, Chile</span>
-      </li>
-      <li>
-        <i class="fa-solid fa-video"></i>
-        <span><strong>Plataforma:</strong> Zoom</span>
-      </li>
-    </ul>
+            <div class="checkbox-group">
+              <input type="checkbox" id="privacidad" name="privacidad" required>
+              <label for="privacidad">
+                He leído y acepto la <a href="politica%20privacidad.html" target="_blank">política de privacidad</a>. <span class="required">*</span>
+              </label>
+            </div>
 
-    <div class="event-actions">
-      <a href="https://simposio-optica-optometria-2026.tm-luisgomez.chatgpt.site/" target="_blank" class="btn-inscription">
-        Más información e inscripción <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8rem;"></i>
-      </a>
-    </div>
-  </div>
-</article>
+            <button type="submit" class="btn-submit">
+              Enviar mensaje <i class="fa-solid fa-paper-plane"></i>
+            </button>
 
+          </form>
+        </div>
+
+        <!-- Galería de imágenes de contacto -->
+        <div class="contact-images-grid">
+          <div class="contact-img-card">
+            <img src="contacto1.jpg" alt="Instalaciones o consulta de Yoel Vera Zapata">
+          </div>
+          <div class="contact-img-card">
+            <img src="contacto2.jpg" alt="Atención clínica optométrica">
+          </div>
         </div>
 
       </div>
